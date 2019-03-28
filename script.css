@@ -7,7 +7,7 @@
     margin: 10px;
 }
 
-#sass-editor {
+#editor {
     width: 50%;
     height: 361px;
     position: absolute;
@@ -17,7 +17,7 @@
     left: 0;
 }
 
-#sass-editor-itog {
+#itog {
     width: 48%;
     height: 361px;
     position: absolute;

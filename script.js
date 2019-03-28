@@ -236,3 +236,17 @@ function trim(str) {
     }
     return str;
 }
+var editor = ace.edit("editor");
+editor.setTheme("ace/theme/monokai");
+editor.session.setMode("ace/mode/scss");
+
+var itog = ace.edit("itog");
+itog.setTheme("ace/theme/monokai");
+itog.session.setMode("ace/mode/scss");
+
+editor.on("change", myFunct);
+
+function myFunct(e) {
+    const value = editor.getValue();
+    console.log(editor.getValue())
+}
