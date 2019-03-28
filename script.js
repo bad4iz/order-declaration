@@ -209,11 +209,18 @@ oneTextArea.addEventListener('change', (event)=>{
     const string = event.target.value;
 
     const arrStr = string.replace(/\n/g, '').split(';').map(item=>item.split(':'));
-    const widthArr = arrStr.map(item=>({weight: Positioning.indexOf(item[0].trim()), value: `${item[0]}:${item[1]};`}));
-
+    const widthArr = arrStr.map(item=>({weight: Positioning.indexOf(trim(item[0])), value: `${trim(item[0])}: ${trim(item[1])};`}));
+  
     const filter = widthArr.filter(item => item.weight > -1);
     const sort = filter.sort((one, two)=>one.weight - two.weight);
 
     const gotovchick = sort.map(item => item.value);
     twoTextArea.value = gotovchick.join('\n');
 });
+
+function trim(str) {
+    if(typeof str === 'string') {
+        return str.trim()
+    }
+    return str;
+}
