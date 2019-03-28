@@ -206,6 +206,7 @@ const Positioning = [
 const oneTextArea = document.querySelector('#one');
 const twoTextArea = document.querySelector('#itogo');
 const rules = document.querySelector('#rules');
+const h2itog = document.querySelector('.h2itog');
 
 const ul = document.createElement('ul');
 Positioning.forEach(item=>{
@@ -215,7 +216,7 @@ Positioning.forEach(item=>{
 });
 
 rules.appendChild(ul);
-
+let flag = false;
 
 // oneTextArea.addEventListener('change', (event)=>{
 //     const string = event.target.value;
@@ -262,8 +263,15 @@ function myFunct(e) {
     const string = b.join('\n');
     itog.setValue(string);
     copy(string);
-    bufferReady.classList.toggle('hidden', false);
-    setTimeout(()=> {bufferReady.classList.toggle('hidden', true)}, 2000)
+    bufferReady.classList.toggle('hidden', flag);
+    flag = true;
+
+    h2itog.innerHTML += ' или уже в буфере';
+    setTimeout(()=> {
+        bufferReady.classList.toggle('hidden', flag)
+        h2itog.innerHTML = 'отсюда забрать';
+
+    }, 2000)
 }
 
 function orderer(string) {
@@ -294,3 +302,4 @@ function copy(str){
     document.body.removeChild(tmp); // Удаляем временный input
     focus.focus(); // Возвращаем фокус туда, где был
 }
+
