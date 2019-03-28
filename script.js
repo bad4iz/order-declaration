@@ -230,6 +230,8 @@ rules.appendChild(ul);
 //     twoTextArea.value = gotovchick.join('\n');
 // });
 
+const bufferReady = document.querySelector('#buffer-ready');
+
 function trim(str) {
     if(typeof str === 'string') {
         return str.trim()
@@ -257,8 +259,11 @@ function myFunct(e) {
         const property = orderer(arr[2])
         return `${selector} {\n${property}\n}`
     });
-
-    itog.setValue(b.join('\n'))
+    const string = b.join('\n');
+    itog.setValue(string);
+    copy(string);
+    bufferReady.classList.toggle('hidden', false);
+    setTimeout(()=> {bufferReady.classList.toggle('hidden', true)}, 2000)
 }
 
 function orderer(string) {
@@ -275,4 +280,17 @@ function orderer(string) {
 
     const gotovchick = sort.map(item => item.value);
     return gotovchick.join('\n');
+}
+
+function copy(str){
+    let tmp   = document.createElement('textarea'), // Создаём новый текстовой input
+        focus = document.activeElement; // Получаем ссылку на элемент в фокусе (чтобы не терять фокус)
+
+    tmp.value = str; // Временному input вставляем текст для копирования
+
+    document.body.appendChild(tmp); // Вставляем input в DOM
+    tmp.select(); // Выделяем весь текст в input
+    document.execCommand('copy'); // Магия! Копирует в буфер выделенный текст (см. команду выше)
+    document.body.removeChild(tmp); // Удаляем временный input
+    focus.focus(); // Возвращаем фокус туда, где был
 }

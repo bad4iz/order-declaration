@@ -8,7 +8,15 @@
     flex: 1 1 50%;
     overflow: hidden;
 }
-
+#buffer-ready {
+    color: red;
+    position: absolute;
+    left: 30%;
+    top: 30%;
+}
+.hidden {
+    display: none;
+}
 #editor {
     /*width: 50%;*/
     height: 361px;
