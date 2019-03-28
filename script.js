@@ -51,6 +51,7 @@
 // editorSass.on("change", (e)=>{console.log(e)})
 
 const Positioning = [
+    'content',
     'position',
     'top',
     'right',
@@ -158,7 +159,7 @@ const Positioning = [
     'border-radius-bottomright',
     'border-radius-bottomleft',
     'border-radius-topleft',
-    'content',
+    
     'quotes',
     'outline',
     'outline-offset',
