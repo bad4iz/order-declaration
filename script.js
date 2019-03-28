@@ -159,7 +159,7 @@ const Positioning = [
     'border-radius-bottomright',
     'border-radius-bottomleft',
     'border-radius-topleft',
-    
+
     'quotes',
     'outline',
     'outline-offset',
@@ -205,13 +205,24 @@ const Positioning = [
 
 const oneTextArea = document.querySelector('#one');
 const twoTextArea = document.querySelector('#itogo');
-//
+const rules = document.querySelector('#rules');
+
+const ul = document.createElement('ul');
+Positioning.forEach(item=>{
+    const li = document.createElement('li');
+    li.innerText = item;
+    ul.appendChild(li);
+});
+
+rules.appendChild(ul);
+
+
 oneTextArea.addEventListener('change', (event)=>{
     const string = event.target.value;
 
     const arrStr = string.replace(/\n/g, '').split(';').map(item=>item.split(':'));
     const widthArr = arrStr.map(item=>({weight: Positioning.indexOf(trim(item[0])), value: `${trim(item[0])}: ${trim(item[1])};`}));
-  
+
     const filter = widthArr.filter(item => item.weight > -1);
     const sort = filter.sort((one, two)=>one.weight - two.weight);
 
