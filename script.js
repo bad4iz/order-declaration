@@ -217,18 +217,18 @@ Positioning.forEach(item=>{
 rules.appendChild(ul);
 
 
-oneTextArea.addEventListener('change', (event)=>{
-    const string = event.target.value;
-
-    const arrStr = string.replace(/\n/g, '').split(';').map(item=>item.split(':'));
-    const widthArr = arrStr.map(item=>({weight: Positioning.indexOf(trim(item[0])), value: `${trim(item[0])}: ${trim(item[1])};`}));
-
-    const filter = widthArr.filter(item => item.weight > -1);
-    const sort = filter.sort((one, two)=>one.weight - two.weight);
-
-    const gotovchick = sort.map(item => item.value);
-    twoTextArea.value = gotovchick.join('\n');
-});
+// oneTextArea.addEventListener('change', (event)=>{
+//     const string = event.target.value;
+//
+//     const arrStr = string.replace(/\n/g, '').split(';').map(item=>item.split(':'));
+//     const widthArr = arrStr.map(item=>({weight: Positioning.indexOf(trim(item[0])), value: `${trim(item[0])}: ${trim(item[1])}\n`}));
+//
+//     const filter = widthArr.filter(item => item.weight > -1);
+//     const sort = filter.sort((one, two)=>one.weight - two.weight);
+//
+//     const gotovchick = sort.map(item => item.value);
+//     twoTextArea.value = gotovchick.join('\n');
+// });
 
 function trim(str) {
     if(typeof str === 'string') {
@@ -248,5 +248,31 @@ editor.on("change", myFunct);
 
 function myFunct(e) {
     const value = editor.getValue();
-    console.log(editor.getValue())
+
+    const a = value.match(/(.*){([\s\S]*?)}/mg, );
+
+    const b = a.map(item => {
+        const arr = item.match(/(.*){([\s\S]*?)}/m, );
+        const selector = arr[1];
+        const property = orderer(arr[2])
+        return `${selector} {\n${property}\n}`
+    });
+
+    itog.setValue(b.join('\n'))
+}
+
+function orderer(string) {
+    const arrStr = string.split('\n').map(item=>item.split(':'));
+    const widthArr = arrStr.map(item=>(
+        {
+            weight: Positioning.indexOf(trim(item[0])),
+            value: `${item[0]}: ${trim(item[1])}`
+        }
+        ));
+
+    const filter = widthArr.filter(item => item.weight > -1);
+    const sort = filter.sort((one, two)=>one.weight - two.weight);
+
+    const gotovchick = sort.map(item => item.value);
+    return gotovchick.join('\n');
 }

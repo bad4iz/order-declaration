@@ -5,24 +5,24 @@
 }
 .col {
     margin: 10px;
+    flex: 1 1 50%;
+    overflow: hidden;
 }
 
 #editor {
-    width: 50%;
+    /*width: 50%;*/
     height: 361px;
-    position: absolute;
-    top: 0;
+    /*top: 0;*/
     /*right: 0;*/
     /*bottom: 50%;*/
-    left: 0;
+    /*left: 0;*/
 }
 
 #itog {
-    width: 48%;
+    /*width: 48%;*/
     height: 361px;
-    position: absolute;
-    top: 0;
-    right: 0;
+    /*top: 0;*/
+    /*right: 0;*/
     /*bottom: 50%;*/
     /*left: 0;*/
 }
