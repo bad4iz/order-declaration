@@ -60,6 +60,8 @@ const Positioning = [
     'z-index',
     'Box model',
     'display',
+    'flex',
+    'flex-grow',
     'float',
     'width',
     'height',
